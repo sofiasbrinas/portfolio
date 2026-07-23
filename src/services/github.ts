@@ -10,5 +10,8 @@ export async function fetchRepos(): Promise<GithubRepo[]> {
         throw new Error (`Erro ao buscar repositórios: ${response.status}`)
     }
 
-    return response.json()
+    const repos: GithubRepo[] = await response.json()
+
+
+    return repos.filter((repo) => repo.topics.includes('portfolio'))
 }
