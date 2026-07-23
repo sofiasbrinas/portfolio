@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react'
-import{ fetchRepos } from '../services/github'
-import type { GithubRepo } from '../types/github'
+import{ fetchReposWithLanguages } from '../services/github'
+import type { GithubRepoWithLanguages } from '../types/github'
 
 interface UseGithubReposResult {
-    repos: GithubRepo[]
+    repos: GithubRepoWithLanguages[]
     loading: boolean
     error: string | null
 }
 
 export function useGithubRepos(): UseGithubReposResult {
-    const [repos, setRepos] = useState<GithubRepo[]>([])
+    const [repos, setRepos] = useState<GithubRepoWithLanguages[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
-        fetchRepos()
+        fetchReposWithLanguages()
         .then(setRepos)
         .catch((err: Error) => setError(err.message))
         .finally(() => setLoading(false))
