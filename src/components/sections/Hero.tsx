@@ -1,3 +1,5 @@
+import HeroCards from './HeroCards'
+
 export default function Hero() {
     return(
         <section className="flex flex-col items-center text-center px-6 py-20">
@@ -29,6 +31,9 @@ export default function Hero() {
                      >
                         Vamos conversar
                   </button>
+            </div>
+            <div>
+                <HeroCards />
             </div>
         </section>
     )
